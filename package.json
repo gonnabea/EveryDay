@@ -1,0 +1,11 @@
+{
+  "name": "everyday",
+  "version": "1.0.0",
+  "description": "학습시간을 효율적으로 관리하기 위해 기획한 간단한 웹입니다",
+  "main": "home.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
