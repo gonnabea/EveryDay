@@ -5,7 +5,7 @@ body{
     height:100vh;
     margin:0;
     padding:0;
-    
+   
 }
 
 .container_1{
@@ -16,8 +16,9 @@ body{
     height:100%;
     background-color:rgba(0, 0, 0, 0.1);
     transform-style: preserve-3d;
-    cursor:url(images/right-arrow-icon-7590.png), auto;
+    /*cursor:url(images/right-arrow-icon-7590.png), auto;*/
 }
+
 
 .background {
     display: flex;
@@ -77,7 +78,6 @@ body{
        -moz-user-select: none; /* Old versions of Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; 
-    
 }
 
 @keyframes showText{
@@ -101,12 +101,84 @@ body{
     }
 }
 
+@media screen and (max-width: 1295px) {
+    .author{
+        margin-top:250px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .background{
+        width:60%;
+        
+    }
+    .background-effect{
+        width:60%;
+    }
+    .author{
+        margin-top:230px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .background{
+        width:55%;
+        
+    }
+    .background-effect{
+        width:55%;
+    }
+    .author{
+        margin-top:250px;
+    }
+   
+}
+
+@media screen and (max-width: 560px) {
+    .background{
+        width:70%;
+        
+    }
+    .background-effect{
+        width:70%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .background{
+        width:90%;
+        
+    }
+    .background-effect{
+        width:90%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .background{
+        line-height: 2;
+        
+    }
+    .background-effect{
+        line-height: 2;
+    }
+}
+
 @keyframes showAuthor{
     0%{
         opacity: 0;
     }
     100%{
         opacity: 1;
+    }
+}
+
+@keyframes blink{
+    0%{
+        border-right: solid 1px rgb(169, 115, 255);
+    }
+    100%{
+        border-right: none;
     }
 }
 
