@@ -109,7 +109,7 @@ body{
     background-color: black;
     color: #9092A9;
     text-align: center;
-    font-size: 10rem;
+    font-size: 7rem;
     box-shadow: 10px 10px 10px 10px grey;
     border: solid 2px white;
 }
@@ -156,12 +156,19 @@ body{
 
 }
 
+.watch_btn{
+    width: 30%;
+    height: 50%;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
 @keyframes rotateWatch{
     0%{
         transform: rotateY(0);
     }
     100%{
-        transform: rotatex(-30deg)
+        transform: rotatex(-50deg)
     }
 }
 
