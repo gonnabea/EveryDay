@@ -45,7 +45,7 @@ function pauseCount(){
     clearInterval(count);
 
     playBtn.className="watch_btn";
-    timer.style.color= "yellowgreen";
+    timer.style.color= "#9092A9";
     playBtn.removeEventListener("click", pauseCount);
     playBtn.addEventListener("click", handleCount);
 }
