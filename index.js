@@ -8,10 +8,13 @@ const playBtn = document.getElementById("playBtn");
 const okBtn = document.getElementById("okBtn");
 const initBtn = document.getElementById("initBtn");
 
-let initTime = `${new Date(0,0).getHours() < 10 ? `0${new Date(0,0).getHours()}` : new Date(0,0).getHours()}:
+
+let sec = 0;
+
+let showTime = `${new Date(0,0).getHours() < 10 ? `0${new Date(0,0).getHours()}` : new Date(0,0).getHours()}:
 ${new Date(0,0).getMinutes() < 10 ? `0${new Date(0,0).getMinutes()}` : new Date(0,0).getMinutes()}:
-${new Date(0,0).getSeconds() < 10 ? `0${new Date(0,0).getSeconds()}` : new Date(0,0).getSeconds()}`;
-console.log(initTime);
+${new Date(0,0+sec).getSeconds() < 10 ? `0${new Date(0,0+sec).getSeconds()}` : new Date(0,0+sec).getSeconds()}`;
+
 
 function handleClick(){
     textBackground.style.animation="slidePage 0.5s ease-in-out forwards";
@@ -21,13 +24,32 @@ function handleClick(){
     author.style.opacity="1";
     container1.style.cursor="default";
     mainArea.style.display="block";
+    
 }
 
+let count  = 0;
+let showCount = 0;
+function handleCount(){
+    playBtn.removeEventListener("click", handleCount);
+    console.log(sec)
+    count = setInterval(() => sec+=1, 1000);
+    showCount = setInterval(() => timer.innerHTML = `${new Date(0,0,0,0,0,0+sec).getHours() < 10 ? `0${new Date(0,0,0,0,0,0+sec).getHours()}` : new Date(0,0,0,0,0,0+sec).getHours()}:
+    ${new Date(0,0,0,0,0,0+sec).getMinutes() < 10 ? `0${new Date(0,0,0,0,0,0+sec).getMinutes()}` : new Date(0,0,0,0,0,0+sec).getMinutes()}:
+    ${new Date(0,0,0,0,0,0+sec).getSeconds() < 10 ? `0${new Date(0,0,0,0,0,0+sec).getSeconds()}` : new Date(0,0,0,0,0,0+sec).getSeconds()}`,1000);
+    playBtn.style.backgroundColor = "#F3E7D9";
+    playBtn.style.border = "none";
+    timer.style.color= "yellowgreen";
 
-async function handleCount(){
-    let sec = 0;
-    await setInterval(sec+=1,1000);
-    setInterval(timer.innerHTML = setInterval(new Date(0,0,0,0,0,sec),1000),1000);
+    playBtn.addEventListener("click", pauseCount);
+}
+
+function pauseCount(){
+    
+    console.log(sec)
+    clearInterval(showCount);
+    clearInterval(count);
+    playBtn.removeEventListener("click", pauseCount);
+    playBtn.addEventListener("click", handleCount);
 }
 
 function handleOk(){
@@ -39,7 +61,7 @@ function handleInit(){
 }
 
 function init(){
-    timer.innerHTML = initTime;
+    
 
     container1.addEventListener("click", handleClick);
     playBtn.addEventListener("click", handleCount);

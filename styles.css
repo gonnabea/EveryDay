@@ -108,10 +108,12 @@ body{
     height:30vh;
     background-color: black;
     color: #9092A9;
-    text-align: center;
     font-size: 7rem;
     box-shadow: 10px 10px 10px 10px grey;
     border: solid 2px white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .watch_back{
@@ -161,7 +163,12 @@ body{
     height: 50%;
     font-size: 2rem;
     font-weight: 700;
+    outline: none;
+    cursor: pointer;
+   
 }
+
+
 
 @keyframes rotateWatch{
     0%{
