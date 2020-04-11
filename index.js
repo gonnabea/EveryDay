@@ -10,11 +10,12 @@ const initBtn = document.getElementById("initBtn");
 
 
 let sec = 0;
+let count  = 0;
+let showCount = 0;
 
 let showTime = `${new Date(0,0).getHours() < 10 ? `0${new Date(0,0).getHours()}` : new Date(0,0).getHours()}:
 ${new Date(0,0).getMinutes() < 10 ? `0${new Date(0,0).getMinutes()}` : new Date(0,0).getMinutes()}:
 ${new Date(0,0+sec).getSeconds() < 10 ? `0${new Date(0,0+sec).getSeconds()}` : new Date(0,0+sec).getSeconds()}`;
-
 
 function handleClick(){
     textBackground.style.animation="slidePage 0.5s ease-in-out forwards";
@@ -24,11 +25,8 @@ function handleClick(){
     author.style.opacity="1";
     container1.style.cursor="default";
     mainArea.style.display="block";
-    
 }
 
-let count  = 0;
-let showCount = 0;
 function handleCount(){
     playBtn.removeEventListener("click", handleCount);
     console.log(sec)
@@ -36,20 +34,24 @@ function handleCount(){
     showCount = setInterval(() => timer.innerHTML = `${new Date(0,0,0,0,0,0+sec).getHours() < 10 ? `0${new Date(0,0,0,0,0,0+sec).getHours()}` : new Date(0,0,0,0,0,0+sec).getHours()}:
     ${new Date(0,0,0,0,0,0+sec).getMinutes() < 10 ? `0${new Date(0,0,0,0,0,0+sec).getMinutes()}` : new Date(0,0,0,0,0,0+sec).getMinutes()}:
     ${new Date(0,0,0,0,0,0+sec).getSeconds() < 10 ? `0${new Date(0,0,0,0,0,0+sec).getSeconds()}` : new Date(0,0,0,0,0,0+sec).getSeconds()}`,1000);
-    playBtn.style.backgroundColor = "#F3E7D9";
-    playBtn.style.border = "none";
+    playBtn.className="watch_btn_play";
     timer.style.color= "yellowgreen";
 
     playBtn.addEventListener("click", pauseCount);
 }
 
 function pauseCount(){
-    
-    console.log(sec)
     clearInterval(showCount);
     clearInterval(count);
+
+    playBtn.className="watch_btn";
+    timer.style.color= "yellowgreen";
     playBtn.removeEventListener("click", pauseCount);
     playBtn.addEventListener("click", handleCount);
+}
+
+function initCount(){
+
 }
 
 function handleOk(){

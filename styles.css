@@ -165,9 +165,19 @@ body{
     font-weight: 700;
     outline: none;
     cursor: pointer;
-   
 }
 
+.watch_btn_play{
+    width: 30%;
+    height: 50%;
+    font-size: 2rem;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+    background-color: #F3E7D9;
+    border: none;
+    color: yellowgreen;
+}
 
 
 @keyframes rotateWatch{
