@@ -59,7 +59,6 @@ function pauseCount(){
 }
 
 function initCount(){
-    
 }
 
 function handleOk(){
@@ -67,12 +66,15 @@ function handleOk(){
 }
 
 function handleInit(){
-    
+    pauseCount();
+    sec=0;
+    localStorage.setItem("savedTime", sec);
+    timer.innerHTML= "00:00";
 }
 
 function init(){
     
-
+    
     container1.addEventListener("click", handleClick);
     playBtn.addEventListener("click", handleCount);
     okBtn.addEventListener("click", handleOk);
