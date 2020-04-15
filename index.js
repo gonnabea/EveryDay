@@ -7,7 +7,8 @@ const timer = document.getElementById("timer");
 const playBtn = document.getElementById("playBtn");
 const okBtn = document.getElementById("okBtn");
 const initBtn = document.getElementById("initBtn");
-
+const printed = document.getElementById("printed");
+const stopWatch = document.getElementById("stopWatch");
 
 let sec = 0 ;
 let count  = 0;
@@ -58,12 +59,24 @@ function pauseCount(){
     playBtn.addEventListener("click", handleCount);
 }
 
-function initCount(){
-}
-
 function handleOk(){
-
+    if(localStorage.getItem("totalTime"))
+{    let totalTime = JSON.parse(localStorage.getItem("totalTime"));
+     totalTime += sec;
+     localStorage.setItem("totalTime", totalTime);
+    }else{
+        console.log(sec)
+        localStorage.setItem("totalTime", sec);
+    }
+    
+    printed.style.animation = "printResult 2s ease-in-out forwards";
+    printed.innerHTML = `총 공부시간 ${localStorage.getItem("totalTime")}초 달성!`;
+    
+    
+    handleInit()
 }
+
+
 
 function handleInit(){
     pauseCount();
