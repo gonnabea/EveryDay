@@ -72,9 +72,11 @@ function handleOk(){
     
     printed.style.animation = "printResult 2s ease-in-out forwards";
     printed.innerHTML = `총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!
-    <br>(+${sec/60}분 추가)
+    <br>(+${Math.floor(sec/60)}분 추가)
     `;
-    printed.innerHTML = printed.innerHTML.concat(`<br>lalala`)
+    printed.innerHTML = printed.innerHTML.concat(`<br>
+    ${Math.floor(sec/3600)}시간 ${Math.floor(sec/60)}분
+    ${new Date().getFullYear()}년 ${new Date().getMonth()}월 ${new Date().getDate()}일`)
     handleInit()
 }
 
