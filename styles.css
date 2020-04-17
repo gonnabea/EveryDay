@@ -173,7 +173,10 @@ body{
 }
 
 .watch_bottom{
-
+    color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .watch_btn{

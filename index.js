@@ -13,7 +13,8 @@ const stopWatch = document.getElementById("stopWatch");
 let sec = 0 ;
 let count  = 0;
 let showCount = 0;
-
+let newRecord = [];
+let records = [];
 let showTime = `${new Date(0,0).getHours() < 10 ? `0${new Date(0,0).getHours()}` : new Date(0,0).getHours()}:
 ${new Date(0,0).getMinutes() < 10 ? `0${new Date(0,0).getMinutes()}` : new Date(0,0).getMinutes()}:
 ${new Date(0,0+sec).getSeconds() < 10 ? `0${new Date(0,0+sec).getSeconds()}` : new Date(0,0+sec).getSeconds()}`;
@@ -30,7 +31,6 @@ function handleClick(){
 
 function handleCount(){
     playBtn.removeEventListener("click", handleCount);
-    console.log(sec)
     count = setInterval(() => 
     {sec+=1;
     localStorage.setItem("savedTime", sec);
@@ -61,15 +61,26 @@ function pauseCount(){
 
 function handleOk(){
     let totalTime = JSON.parse(localStorage.getItem("totalTime"));
+    
+
     if(localStorage.getItem("totalTime"))
     {  
      totalTime += sec;
      localStorage.setItem("totalTime", totalTime);
     }else{
-        console.log(sec)
         localStorage.setItem("totalTime", sec);
     }
-    
+    newRecord = `${Math.floor(sec/3600)}시간 ${Math.floor(sec/60)}분 ${new Date().getFullYear()}년 ${new Date().getMonth()}월 ${new Date().getDate()}일`;
+    if(localStorage.getItem("records")){
+    let origin = JSON.parse(localStorage.getItem("records"))
+    console.log(origin)
+    origin.push(newRecord);
+    localStorage.setItem("records", JSON.stringify(origin));
+    }
+    else{
+        records.push(newRecord);
+        localStorage.setItem("records", JSON.stringify(records));
+    }
     printed.style.animation = "printResult 2s ease-in-out forwards";
     printed.innerHTML = `총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!
     <br>(+${Math.floor(sec/60)}분 추가)
