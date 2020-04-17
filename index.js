@@ -60,8 +60,9 @@ function pauseCount(){
 }
 
 function handleOk(){
+    let totalTime = JSON.parse(localStorage.getItem("totalTime"));
     if(localStorage.getItem("totalTime"))
-{    let totalTime = JSON.parse(localStorage.getItem("totalTime"));
+    {  
      totalTime += sec;
      localStorage.setItem("totalTime", totalTime);
     }else{
@@ -70,9 +71,10 @@ function handleOk(){
     }
     
     printed.style.animation = "printResult 2s ease-in-out forwards";
-    printed.innerHTML = `총 공부시간 ${localStorage.getItem("totalTime")}초 달성!`;
-    
-    
+    printed.innerHTML = `총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!
+    <br>(+${sec/60}분 추가)
+    `;
+    printed.innerHTML = printed.innerHTML.concat(`<br>lalala`)
     handleInit()
 }
 
