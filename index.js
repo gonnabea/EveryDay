@@ -83,7 +83,11 @@ function handleOk(){
     printed.style.animation = "printResult 2s ease-in-out forwards";
     printed.innerHTML = `<h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
     <ul class="recordList">
-    ${JSON.parse(localStorage.getItem("records")).map( record => `<li class="record">${record}</li>`).join('')}</ul>
+    ${JSON.parse(localStorage.getItem("records")).map( record => {
+        return (
+            console.log(record),
+            `<li class="record">${record}</li>`
+            )}).join('')}</ul>
     `;
     
     handleInit()
