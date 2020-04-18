@@ -213,7 +213,7 @@ body{
 
 .recordList {
     overflow: auto;
-    
+    width: 80%;
     
    
 }
