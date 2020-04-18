@@ -81,8 +81,9 @@ function handleOk(){
         localStorage.setItem("records", JSON.stringify(records));
     }
     printed.style.animation = "printResult 2s ease-in-out forwards";
-    printed.innerHTML = `<ul class="recordList"><h2>총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
-    ${JSON.parse(localStorage.getItem("records")).map( record => `<li>${record}</li>`).join('')}</ul>
+    printed.innerHTML = `<h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
+    <ul class="recordList">
+    ${JSON.parse(localStorage.getItem("records")).map( record => `<li class="record">${record}</li>`).join('')}</ul>
     `;
     
     handleInit()

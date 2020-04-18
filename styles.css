@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Hi+Melody&display=swap');
 body{
     width:100vw;
     height:100vh;
@@ -88,9 +88,6 @@ body{
     
 }
 
-.records{
-    background-color: red;
-}
 
 .stop_watch{
     transform-style: preserve-3d;
@@ -205,10 +202,54 @@ body{
     color: yellowgreen;
 }
 
-.recordList {
-    overflow: auto;
+.recordTitle {
+    font-family: 'Sunflower', sans-serif;
+    font-weight: 700;
+    color:#BC96F7;
+    height:30%;
+    display: flex;
+    justify-content: center;
 }
 
+.recordList {
+    overflow: auto;
+    
+    
+   
+}
+
+::-webkit-scrollbar { width: 1.5vh; }
+::-webkit-scrollbar-track { 
+    background-color:#5D5D5D;
+    
+ }
+ 
+::-webkit-scrollbar-thumb { 
+    background: white;
+    border-radius:10px; }
+::-webkit-scrollbar-thumb:hover { background: #404040; }
+::-webkit-scrollbar-thumb:active { background: #808080; }
+::-webkit-scrollbar-button { display: none; }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid white;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.record{
+    font-family: 'Hi Melody', cursive;
+    font-size:30px;
+}
 @keyframes rotateWatch{
     0%{
         transform: rotateY(0);
