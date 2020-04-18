@@ -88,6 +88,10 @@ body{
     
 }
 
+.records{
+    background-color: red;
+}
+
 .stop_watch{
     transform-style: preserve-3d;
     position: absolute;
@@ -133,13 +137,14 @@ body{
     background-color: white;
     color: black;
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 20px;
     background-color: ivory;
     box-shadow: 10px 10px 10px black;
     background-size: cover;
-    line-height: 60px;
+    overflow: auto;
 }
 
 .watch_left{

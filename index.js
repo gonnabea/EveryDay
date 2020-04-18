@@ -10,6 +10,7 @@ const initBtn = document.getElementById("initBtn");
 const printed = document.getElementById("printed");
 const stopWatch = document.getElementById("stopWatch");
 
+
 let sec = 0 ;
 let count  = 0;
 let showCount = 0;
@@ -61,8 +62,6 @@ function pauseCount(){
 
 function handleOk(){
     let totalTime = JSON.parse(localStorage.getItem("totalTime"));
-    
-
     if(localStorage.getItem("totalTime"))
     {  
      totalTime += sec;
@@ -82,12 +81,10 @@ function handleOk(){
         localStorage.setItem("records", JSON.stringify(records));
     }
     printed.style.animation = "printResult 2s ease-in-out forwards";
-    printed.innerHTML = `총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!
-    <br>(+${Math.floor(sec/60)}분 추가)
+    printed.innerHTML = `<h2>총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
+    ${JSON.parse(localStorage.getItem("records")).map( record => `<li>${record}</li>`).join('')}
     `;
-    printed.innerHTML = printed.innerHTML.concat(`<br>
-    ${Math.floor(sec/3600)}시간 ${Math.floor(sec/60)}분
-    ${new Date().getFullYear()}년 ${new Date().getMonth()}월 ${new Date().getDate()}일`)
+    
     handleInit()
 }
 
