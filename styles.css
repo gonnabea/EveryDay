@@ -144,7 +144,7 @@ body{
     background-color: ivory;
     box-shadow: 10px 10px 10px black;
     background-size: cover;
-    overflow: auto;
+    
 }
 
 .watch_left{
@@ -205,6 +205,9 @@ body{
     color: yellowgreen;
 }
 
+.recordList {
+    overflow: auto;
+}
 
 @keyframes rotateWatch{
     0%{
@@ -344,7 +347,7 @@ body{
 @keyframes printResult{
     0%{
         transform: translateY(0);
-        overflow: hidden;
+        
     }
     35%{
         transform: translateY(-350px) translateX(0);
@@ -357,6 +360,6 @@ body{
         z-index: 100;
         transform: translateY(-350px) translateX(-50vw) translateZ(500px);
         height:80vh;
-        overflow: auto;
+        
     }
 };
