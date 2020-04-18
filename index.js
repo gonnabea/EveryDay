@@ -72,7 +72,7 @@ function handleOk(){
     newRecord = `${Math.floor(sec/3600)}시간 ${Math.floor(sec/60)}분 ${new Date().getFullYear()}년 ${new Date().getMonth()}월 ${new Date().getDate()}일`;
     if(localStorage.getItem("records")){
     let origin = JSON.parse(localStorage.getItem("records"))
-    console.log(origin)
+    
     origin.push(newRecord);
     localStorage.setItem("records", JSON.stringify(origin));
     }
@@ -81,14 +81,19 @@ function handleOk(){
         localStorage.setItem("records", JSON.stringify(records));
     }
     printed.style.animation = "printResult 2s ease-in-out forwards";
+    const ofToday = JSON.parse(localStorage.getItem("records")).filter(record => record.split("분 ")[1] === newRecord.split("분 ")[1]);
+    console.log(ofToday);
+    let todayDate = "";
+    todayDate = ofToday.map(record => record.split("분 ")[1])[0];
+    let todayMinutes = 0;
+    ofToday.map(record => todayMinutes += parseInt(record.split("시간")[0])*60 + parseInt(record.split(" ")[1]));
+    console.log(todayDate)
+    let todayTotal = `${Math.floor(todayMinutes/60)}시간 ${Math.floor(todayMinutes%60)}분`;
+    
     printed.innerHTML = `<h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
     <ul class="recordList">
-    ${JSON.parse(localStorage.getItem("records")).map( record => {
-        return (
-            console.log(record),
-            `<li class="record">${record}</li>`
-            )}).join('')}</ul>
-    `;
+    <li class="record">${todayTotal} / ${todayDate}</li></ul>
+   `
     
     handleInit()
 }
