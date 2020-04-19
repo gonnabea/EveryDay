@@ -80,7 +80,9 @@ function handleOk(){
         records.push(newRecord);
         localStorage.setItem("records", JSON.stringify(records));
     }
-    printed.style.animation = "printResult 2s ease-in-out forwards";
+    printed.style.animation = "printResult 0.7s ease-in-out forwards";
+    textBackground.style.display = "none";
+    author.style.display = "none";
     const ofToday = JSON.parse(localStorage.getItem("records")).filter(record => record.split("분 ")[1] === newRecord.split("분 ")[1]);
     
     let todayDate = "";
@@ -113,11 +115,14 @@ function handleOk(){
     if(JSON.parse(localStorage.getItem("recordDays")) !==null){
         checkNull = JSON.parse(localStorage.getItem("recordDays"))
     }
-    printed.innerHTML = `<h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
-    <ul class="recordList">
+    printed.innerHTML = `
+    <span class="exitPrint" id="exitPrint">X</span>
+    <h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
+    <ul class="recordList id="recordList">
     <li class="record">${checkNull}${todayTotal}</li></ul>
    `
-    
+   const recordList = document.getElementById("recordList");
+    recordList.style.animation="flick 1s forwards";
     handleInit()
 }
 
