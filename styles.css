@@ -204,15 +204,16 @@ body{
     font-family: 'Sunflower', sans-serif;
     font-weight: 700;
     color:black;
-    height:30%;
+    margin-bottom: 20%;
     display: flex;
     justify-content: center;
+    animation: flick 0.4s forwards;
 }
 
 .recordList {
     overflow: auto;
     width: 80%;
-    
+    animation: flick 0.4s forwards;
    
 }
 
@@ -412,7 +413,7 @@ select:-webkit-autofill:focus {
         background-color: palegoldenrod;
     }
     100%{
-        background-color: palegoldenrod;
+        background-color: none;
     }
 }
 ;

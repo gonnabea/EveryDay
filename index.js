@@ -69,7 +69,7 @@ function handleOk(){
     }else{
         localStorage.setItem("totalTime", sec);
     }
-    newRecord = `${Math.floor(sec/3600)}시간 ${Math.floor(sec/60)}분 ${new Date().getFullYear()}년 ${new Date().getMonth()+1}월 ${new Date().getDate()}일`;
+    newRecord = `${Math.floor(sec/3600)}시간 ${Math.floor(sec/60%60)}분 ${new Date().getFullYear()}년 ${new Date().getMonth()+1}월 ${new Date().getDate()}일`;
     if(localStorage.getItem("records")){
     let origin = JSON.parse(localStorage.getItem("records"))
     
@@ -121,8 +121,7 @@ function handleOk(){
     <ul class="recordList id="recordList">
     <li class="record">${checkNull}${todayTotal}</li></ul>
    `
-   const recordList = document.getElementById("recordList");
-    recordList.style.animation="flick 1s forwards";
+   
     handleInit()
 }
 
