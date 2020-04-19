@@ -19,7 +19,7 @@ let records = [];
 let showTime = `${new Date(0,0).getHours() < 10 ? `0${new Date(0,0).getHours()}` : new Date(0,0).getHours()}:
 ${new Date(0,0).getMinutes() < 10 ? `0${new Date(0,0).getMinutes()}` : new Date(0,0).getMinutes()}:
 ${new Date(0,0+sec).getSeconds() < 10 ? `0${new Date(0,0+sec).getSeconds()}` : new Date(0,0+sec).getSeconds()}`;
-
+let RecordOfDays = localStorage.getItem("RecordOfDay");
 function handleClick(){
     textBackground.style.animation="slidePage 0.5s ease-in-out forwards";
     textBackground.style.position="absolute";
@@ -69,7 +69,7 @@ function handleOk(){
     }else{
         localStorage.setItem("totalTime", sec);
     }
-    newRecord = `${Math.floor(sec/3600)}시간 ${Math.floor(sec/60)}분 ${new Date().getFullYear()}년 ${new Date().getMonth()}월 ${new Date().getDate()}일`;
+    newRecord = `${Math.floor(sec/3600)}시간 ${Math.floor(sec/60)}분 ${new Date().getFullYear()}년 ${new Date().getMonth()+1}월 ${new Date().getDate()}일`;
     if(localStorage.getItem("records")){
     let origin = JSON.parse(localStorage.getItem("records"))
     
@@ -82,17 +82,40 @@ function handleOk(){
     }
     printed.style.animation = "printResult 2s ease-in-out forwards";
     const ofToday = JSON.parse(localStorage.getItem("records")).filter(record => record.split("분 ")[1] === newRecord.split("분 ")[1]);
-    console.log(ofToday);
+    
     let todayDate = "";
     todayDate = ofToday.map(record => record.split("분 ")[1])[0];
     let todayMinutes = 0;
     ofToday.map(record => todayMinutes += parseInt(record.split("시간")[0])*60 + parseInt(record.split(" ")[1]));
-    console.log(todayDate)
-    let todayTotal = `${Math.floor(todayMinutes/60)}시간 ${Math.floor(todayMinutes%60)}분`;
     
+    let todayRecord = `${Math.floor(todayMinutes/60)}시간 ${Math.floor(todayMinutes%60)}분`;
+    let todayTotal = `${todayRecord} / ${todayDate}`;
+    let dayList = "";
+    let recordDays = [];
+    if(localStorage.getItem("totalOfDay")){
+    dayList = localStorage.getItem("totalOfDay");
+    if(dayList.split("/")[dayList.split(" / ").length-1].trim() == todayTotal.split(" / ")[1]){ // 같은 날일 경우
+        
+        dayList += todayTotal;
+        localStorage.setItem("totalOfDay", dayList);
+    }
+    else{
+        recordDays = JSON.parse(localStorage.getItem("recordDays"));
+        recordDays.push(dayList.split("/")[dayList.split(" / ").length-3].trim());
+        localStorage.setItem("recordDays", JSON.stringify(recordDays));
+    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    }else{
+    localStorage.setItem("totalOfDay", todayTotal); 
+    }
+
+    let checkNull = "";
+    if(JSON.parse(localStorage.getItem("recordDays")) !==null){
+        checkNull = JSON.parse(localStorage.getItem("recordDays"))
+    }
     printed.innerHTML = `<h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
     <ul class="recordList">
-    <li class="record">${todayTotal} / ${todayDate}</li></ul>
+    <li class="record">${checkNull}${todayTotal}</li></ul>
    `
     
     handleInit()
