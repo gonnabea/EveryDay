@@ -98,7 +98,7 @@ function handleOk(){
     dayList = localStorage.getItem("totalOfDay");
     
     const record1 = JSON.parse(localStorage.getItem("records"));
-    console.log(record1[record1.length-2].split("분 ")[1])
+    console.log(record1[record1.length-2])
     if(record1[record1.length-2].split("분 ")[1] == todayTotal.split(" / ")[1]){ // 같은 날일 경우
         dayList += todayTotal;
         localStorage.setItem("totalOfDay", dayList);
@@ -108,7 +108,7 @@ function handleOk(){
         if(recordDays.length>0){
             recordDays = JSON.parse(localStorage.getItem("recordDays"));
         }
-        recordDays.push(record1[record1.length-2].split("분 ")[1]);
+        recordDays.push(record1[record1.length-2]);
         localStorage.setItem("recordDays", JSON.stringify(recordDays));
     }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
@@ -116,9 +116,9 @@ function handleOk(){
     localStorage.setItem("totalOfDay", todayTotal); 
     }
 
-    let checkNull = "";
+    let checkNull = [];
     if(JSON.parse(localStorage.getItem("recordDays")) !==null){
-        checkNull = JSON.parse(localStorage.getItem("recordDays")).join('')
+        checkNull = JSON.parse(localStorage.getItem("recordDays")).map(day => `${day}<br>`).join('');
     }
     printed.innerHTML = `
     <h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
@@ -129,8 +129,18 @@ function handleOk(){
    span.innerHTML = "X";
    span.className="exitPrint";
    span.id="exitPrint";
-   printed.appendChild(span);
    span.addEventListener("click", handleExit);
+   printed.appendChild(span);
+   
+   const downloadBtn = document.createElement("a");
+   downloadBtn.className = "downloadBtn";
+   downloadBtn.id = "downloadBtn";
+   downloadBtn.innerHTML="기록 저장";
+   downloadBtn.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(
+       `총 공부시간: ${(totalTime/3600).toFixed(1)}\n공부기록\n${checkNull}${todayTotal}`));
+   downloadBtn.setAttribute('download', "공부 기록");
+   window.URL = window.URL || window.webkitURL;
+   printed.appendChild(downloadBtn)
     handleInit()
 }
 
