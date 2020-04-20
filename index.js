@@ -96,16 +96,19 @@ function handleOk(){
     let recordDays = [];
     if(localStorage.getItem("totalOfDay")){
     dayList = localStorage.getItem("totalOfDay");
-    if(dayList.split("/")[dayList.split(" / ").length-1].trim() == todayTotal.split(" / ")[1]){ // 같은 날일 경우
-        
+    
+    const record1 = JSON.parse(localStorage.getItem("records"));
+    console.log(record1[record1.length-2].split("분 ")[1])
+    if(record1[record1.length-2].split("분 ")[1] == todayTotal.split(" / ")[1]){ // 같은 날일 경우
         dayList += todayTotal;
         localStorage.setItem("totalOfDay", dayList);
+        alert("시간이 추가되었습니다")
     }
     else{
-        if(JSON.parse(localStorage.getItem("recordDays"))){
-        recordDays = JSON.parse(localStorage.getItem("recordDays"));
+        if(recordDays.length>0){
+            recordDays = JSON.parse(localStorage.getItem("recordDays"));
         }
-        recordDays.push(dayList.split("/")[dayList.split(" / ").length-3].trim());
+        recordDays.push(record1[record1.length-2].split("분 ")[1]);
         localStorage.setItem("recordDays", JSON.stringify(recordDays));
     }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
@@ -115,7 +118,7 @@ function handleOk(){
 
     let checkNull = "";
     if(JSON.parse(localStorage.getItem("recordDays")) !==null){
-        checkNull = JSON.parse(localStorage.getItem("recordDays"))
+        checkNull = JSON.parse(localStorage.getItem("recordDays")).join('')
     }
     printed.innerHTML = `
     <h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
