@@ -116,13 +116,26 @@ function handleOk(){
         checkNull = JSON.parse(localStorage.getItem("recordDays"))
     }
     printed.innerHTML = `
-    <span class="exitPrint" id="exitPrint">X</span>
     <h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
     <ul class="recordList id="recordList">
     <li class="record">${checkNull}${todayTotal}</li></ul>
    `
-   
+   const span = document.createElement("span");
+   span.innerHTML = "X";
+   span.className="exitPrint";
+   span.id="exitPrint";
+   printed.appendChild(span);
+   span.addEventListener("click", handleExit);
     handleInit()
+}
+
+function handleExit(){
+    const exitPrint = document.getElementById("exitPrint");
+    console.log("xdx")
+    printed.style.animation="printBack 0.7s ease-in-out forwards";
+    exitPrint.style.display="none";
+    textBackground.style.display = "flex";
+    author.style.display = "block";
 }
 
 
