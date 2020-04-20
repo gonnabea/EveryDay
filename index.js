@@ -139,16 +139,17 @@ function handleOk(){
    downloadBtn.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(
        `총 공부시간: ${(totalTime/3600).toFixed(1)}시간\n\n공부기록\n\n${checkNull.length >0 ? checkNull.split("<br>").join('') : ""}${todayTotal}`));
    downloadBtn.setAttribute('download', "공부 기록");
-   window.URL = window.URL || window.webkitURL;
    printed.appendChild(downloadBtn)
     handleInit()
 }
 
 function handleExit(){
     const exitPrint = document.getElementById("exitPrint");
+    const downloadBtn = document.getElementById("downloadBtn");
     console.log("xdx")
     printed.style.animation="printBack 0.7s ease-in-out forwards";
     exitPrint.style.display="none";
+    downloadBtn.style.display = "none";
     textBackground.style.display = "flex";
     author.style.display = "block";
 }

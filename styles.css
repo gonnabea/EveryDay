@@ -138,7 +138,7 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    box-shadow: 10px 10px 10px black;
+    box-shadow: 0px 0px 20px black;
     background-size: cover;
 }
 
@@ -173,10 +173,7 @@ body{
 }
 
 .watch_bottom{
-    color: blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  
 }
 
 .watch_btn{
