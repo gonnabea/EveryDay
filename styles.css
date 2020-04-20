@@ -258,6 +258,17 @@ select:-webkit-autofill:focus {
     font-family: 'Hi Melody', cursive;
     font-size:30px;
     color:black;
+    height: 50vh;
+}
+
+.downloadBtn{
+    text-decoration: none;
+    background-color:#047CC5;
+    color: white;
+    box-shadow: 0 0 10px;
+    
+    border-radius: 20px;
+    padding: 10px;
 }
 @keyframes rotateWatch{
     0%{

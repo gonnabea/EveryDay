@@ -118,7 +118,7 @@ function handleOk(){
 
     let checkNull = [];
     if(JSON.parse(localStorage.getItem("recordDays")) !==null){
-        checkNull = JSON.parse(localStorage.getItem("recordDays")).map(day => `${day}<br>`).join('');
+        checkNull = JSON.parse(localStorage.getItem("recordDays")).map(day => `${day}\n<br>`).join('');
     }
     printed.innerHTML = `
     <h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
@@ -137,7 +137,7 @@ function handleOk(){
    downloadBtn.id = "downloadBtn";
    downloadBtn.innerHTML="기록 저장";
    downloadBtn.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(
-       `총 공부시간: ${(totalTime/3600).toFixed(1)}\n공부기록\n${checkNull}${todayTotal}`));
+       `총 공부시간: ${(totalTime/3600).toFixed(1)}시간\n\n공부기록\n\n${checkNull.length >0 ? checkNull.split("<br>").join('') : ""}${todayTotal}`));
    downloadBtn.setAttribute('download', "공부 기록");
    window.URL = window.URL || window.webkitURL;
    printed.appendChild(downloadBtn)
