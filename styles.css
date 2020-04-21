@@ -308,51 +308,109 @@ select:-webkit-autofill:focus {
     .author{
         margin-top:250px;
     }
+    .watch_front {
+        font-size: 5rem;
+    }
 }
 
 @media screen and (max-width: 1024px) {
-    .background{
-        width:60%;
-        
-    }
-    .background-effect{
-        width:60%;
-    }
+    
     .author{
-        margin-top:230px;
-    }
+        margin-top:300px;
+        margin-left: 200px;
+    };
+    .watch_front {
+        font-size: 4rem;
+    };
+    
+
 }
 
 @media screen and (max-width: 860px) {
     .background{
-        width:55%;
+        font-size:20px;
+        line-height: 2.5;
     }
+    
     .background-effect{
-        width:55%;
+        font-size:20px;
+        line-height: 2.5;
     }
     .author{
         margin-top:250px;
+        margin-left: 300px;
     }
-   
-}
-
-@media screen and (max-width: 560px) {
-    .background{
-        width:70%;
-        
-    }
-    .background-effect{
-        width:70%;
+    .watch_front {
+        font-size: 3rem;
     }
 }
 
+
+
 @media screen and (max-width: 560px) {
     .background{
-        width:90%;
+        display: none;
+        opacity: 0;
+    }
+    
+    .background-effect{
+        display: none;
+    }
+    .author{
+        display: none;
+        opacity: 0;
+    }
+    .main_area{
+        display: block;
+        margin-right: 40vh;
+    }
+
+    .watch_front{
+        
+        width:70vw;
+        height:30vh;
         
     }
-    .background-effect{
-        width:90%;
+    
+    .watch_back{
+      
+        width:70vw;
+        height:30vh;
+        
+    }
+    
+    .printed{
+        
+        width:40vw;
+        height:10vh;
+       
+    }
+    
+    .watch_left{
+      
+        width:200px;
+        height:30vh;
+        
+    }
+    
+    .watch_right{
+        position: absolute;
+        transform: rotateY(-90deg) translateZ(-515px); 
+        width:200px;
+        height:30vh;
+      
+    }
+    
+    .watch_top{
+      
+        transform: rotateX(90deg) translateZ(102px); 
+        width:70vw;
+        height:200px;
+        
+    }
+    
+    .watch_bottom{
+      
     }
 }
 
