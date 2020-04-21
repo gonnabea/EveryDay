@@ -200,7 +200,7 @@ body{
 .recordTitle {
     font-family: 'Sunflower', sans-serif;
     font-weight: 700;
-    color:black;
+    color:white;
     margin-bottom: 20%;
     display: flex;
     justify-content: center;
@@ -210,7 +210,6 @@ body{
 .recordList {
     overflow: auto;
     width: 80%;
-    animation: flick 0.4s forwards;
    
 }
 
@@ -255,7 +254,8 @@ select:-webkit-autofill:focus {
     font-family: 'Hi Melody', cursive;
     font-size:30px;
     color:black;
-    height: 50vh;
+    max-height: 40vh;
+    animation: flick 0.4s forwards;
 }
 
 .downloadBtn{
@@ -424,6 +424,7 @@ select:-webkit-autofill:focus {
             z-index: -100;
             transform: translateY(0) translateX(0) translateZ(100px);
             height:30vh;
+            background: none;
     }
 }
 
