@@ -310,7 +310,8 @@ select:-webkit-autofill:focus {
     }
     .watch_front {
         font-size: 5rem;
-    }
+    };
+    
 }
 
 @media screen and (max-width: 1024px) {
@@ -318,12 +319,15 @@ select:-webkit-autofill:focus {
     .author{
         margin-top:300px;
         margin-left: 200px;
-    };
+    }
     .watch_front {
         font-size: 4rem;
-    };
+    }
+    .exitPrint{
+        margin-top: -30vh;
+        
+    }
     
-
 }
 
 @media screen and (max-width: 860px) {
@@ -342,6 +346,13 @@ select:-webkit-autofill:focus {
     }
     .watch_front {
         font-size: 3rem;
+    }
+    .recordTitle{
+        font-size: 20px;
+    }
+    .exitPrint{
+        margin-top: -20vh;
+        font-size: 40px;
     }
 }
 
@@ -367,14 +378,14 @@ select:-webkit-autofill:focus {
 
     .watch_front{
         
-        width:70vw;
+        width:80vw;
         height:30vh;
         
     }
     
     .watch_back{
       
-        width:70vw;
+        width:80vw;
         height:30vh;
         
     }
@@ -404,13 +415,22 @@ select:-webkit-autofill:focus {
     .watch_top{
       
         transform: rotateX(90deg) translateZ(102px); 
-        width:70vw;
+        width:80vw;
         height:200px;
-        
+        text-align: center;
     }
     
-    .watch_bottom{
-      
+    .exitPrint{
+        margin-top: -18vh;
+        margin-left: 10vh;
+        font-size: 30px;
+    }
+    .recordTitle{
+        margin-top:30px;
+    }
+    .record{
+        font-size: 20px;
+        
     }
 }
 
@@ -471,6 +491,39 @@ select:-webkit-autofill:focus {
     }
 }
 
+@keyframes printResult_1295{
+    0%{
+    }
+    100%{
+        z-index: 100;
+        transform: translateY(-35vh) translateX(-47vw) translateZ(500px);
+        height:70vh;
+        
+    }
+}
+
+@keyframes printResult_860{
+    0%{
+    }
+    100%{
+        z-index: 100;
+        transform: translateY(-20vh) translateX(-47vw) translateZ(500px);
+        height:50vh;
+        
+    }
+}
+
+@keyframes printResult_560{
+    0%{
+    }
+    100%{
+        z-index: 100;
+        transform: translateY(-45vh) translateX(0) translateZ(500px);
+        height:40vh;
+        width: 30vh;
+    }
+}
+
 @keyframes printBack{
     
         0%{
@@ -484,6 +537,23 @@ select:-webkit-autofill:focus {
             height:30vh;
             background: none;
     }
+}
+
+@keyframes printBack_560{
+    
+    0%{
+        z-index: 100;
+        transform: translateY(-45vh) translateX(0) translateZ(500px);
+        height:40vh;
+        width: 30vh;
+    }
+    100%{
+        z-index: -100;
+        transform: translateY(0) translateX(0) translateZ(100px);
+        height:10vh;
+        width: 20vh;
+        background: none;
+}
 }
 
 @keyframes flick{

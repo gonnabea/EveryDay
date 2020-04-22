@@ -25,7 +25,12 @@ function handleClick(){
     textBackground.style.position="absolute";
     textBgEffect.style.display= "none";
     author.style.animation="slideAuthor 0.5s ease-in-out forwards";
-    author.style.opacity="1";
+    if(window.matchMedia("(max-width: 10000px)").matches){
+        author.style.opacity="1";
+    }
+    if(window.matchMedia("(max-width: 560px)").matches){
+        author.style.opacity="0";
+    }
     container1.style.cursor="default";
     mainArea.style.display="block";
 }
@@ -80,7 +85,18 @@ function handleOk(){
         records.push(newRecord);
         localStorage.setItem("records", JSON.stringify(records));
     }
-    printed.style.animation = "printResult 0.7s ease-in-out forwards";
+    if(window.matchMedia("(max-width: 10000px)").matches){
+        printed.style.animation = "printResult 0.7s ease-in-out forwards";
+    }
+    if(window.matchMedia("(max-width: 1295px)").matches){
+        printed.style.animation = "printResult_1295 0.7s ease-in-out forwards";
+    }
+    if(window.matchMedia("(max-width: 860px)").matches){
+        printed.style.animation = "printResult_860 0.7s ease-in-out forwards";
+    }
+    if(window.matchMedia("(max-width: 560px)").matches){
+        printed.style.animation = "printResult_560 0.7s ease-in-out forwards";
+    }
     textBackground.style.display = "none";
     author.style.display = "none";
     const ofToday = JSON.parse(localStorage.getItem("records")).filter(record => record.split("분 ")[1] === newRecord.split("분 ")[1]);
@@ -105,7 +121,7 @@ function handleOk(){
         alert("시간이 추가되었습니다")
     }
     else{
-        if(recordDays.length>0){
+        if(recordDays){
             recordDays = JSON.parse(localStorage.getItem("recordDays"));
         }
         let sumDay = 0;
@@ -127,7 +143,7 @@ function handleOk(){
         checkNull = JSON.parse(localStorage.getItem("recordDays")).map(day => `${day}\n<br>`).join('');
     }
     printed.innerHTML = `
-    <h2 class="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
+    <h2 class="recordTitle" id="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
     <ul class="recordList id="recordList">
     <li class="record">${checkNull}${todayTotal}</li></ul>
    `
@@ -152,10 +168,18 @@ function handleOk(){
 function handleExit(){
     const exitPrint = document.getElementById("exitPrint");
     const downloadBtn = document.getElementById("downloadBtn");
-    console.log("xdx")
-    printed.style.animation="printBack 0.7s ease-in-out forwards";
+    const recordTitle = document.getElementById("recordTitle");
+    console.log("xdx");
+    if(window.matchMedia("(max-width: 10000px)").matches){
+        printed.style.animation="printBack 0.7s ease-in-out forwards";
+    }
+    if(window.matchMedia("(max-width: 560px)").matches){
+        printed.style.animation = "printBack_560 0.7s ease-in-out forwards";
+    }
+    
     exitPrint.style.display="none";
     downloadBtn.style.display = "none";
+    recordTitle.style.display = "none";
     textBackground.style.display = "flex";
     author.style.display = "block";
 }
