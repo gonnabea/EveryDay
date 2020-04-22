@@ -121,7 +121,7 @@ function handleOk(){
         alert("시간이 추가되었습니다")
     }
     else{
-        if(recordDays){
+        if(JSON.parse(localStorage.getItem("recordDays"))){
             recordDays = JSON.parse(localStorage.getItem("recordDays"));
         }
         let sumDay = 0;
