@@ -10,8 +10,10 @@ const initBtn = document.getElementById("initBtn");
 const printed = document.getElementById("printed");
 const stopWatch = document.getElementById("stopWatch");
 
-
 let sec = 0 ;
+if(localStorage.getItem("savedTime")){
+    sec = parseInt(localStorage.getItem("savedTime"));
+}
 let count  = 0;
 let showCount = 0;
 let newRecord = [];
@@ -126,7 +128,7 @@ function handleOk(){
         }
         let sumDay = 0;
         for(let i=0 ; i<record1.length-2 ; i++){
-            sumDay += parseInt(record1[i].split("시간")[0])*60 + parseInt(record[i].split(" ")[1]);
+            sumDay += parseInt(record1[i].split("시간")[0])*60 + parseInt(record1[i].split(" ")[1]);
         }
         recordToString = `${Math.floor(sumDay/60)}시간 ${Math.floor(sumDay%60)}분`;
         recordDays.push(sumDay);
