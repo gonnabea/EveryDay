@@ -116,7 +116,7 @@ function handleOk(){
     dayList = localStorage.getItem("totalOfDay");
     
     const record1 = JSON.parse(localStorage.getItem("records"));
-    console.log(record1[record1.length-2])
+    console.log(record1[record1.length-2].split("분 ")[1])
     if(record1[record1.length-2].split("분 ")[1] == todayTotal.split(" / ")[1]){ // 같은 날일 경우
         dayList += todayTotal;
         localStorage.setItem("totalOfDay", dayList);
@@ -131,7 +131,7 @@ function handleOk(){
             sumDay += parseInt(record1[i].split("시간")[0])*60 + parseInt(record1[i].split(" ")[1]);
         }
         recordToString = `${Math.floor(sumDay/60)}시간 ${Math.floor(sumDay%60)}분`;
-        recordDays.push(sumDay);
+        recordDays.push(recordToString + record1[record1.length-2].split("분 ")[1]);
         console.log(recordDays)
         localStorage.setItem("recordDays", JSON.stringify(recordDays));
     }
@@ -144,6 +144,9 @@ function handleOk(){
     if(JSON.parse(localStorage.getItem("recordDays")) !==null){
         checkNull = JSON.parse(localStorage.getItem("recordDays")).map(day => `${day}\n<br>`).join('');
     }
+
+    //JSON.parse(localStorage.getItem("recordDays"));
+    
     printed.innerHTML = `
     <h2 class="recordTitle" id="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
     <ul class="recordList id="recordList">
