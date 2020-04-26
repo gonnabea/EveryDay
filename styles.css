@@ -267,6 +267,10 @@ select:-webkit-autofill:focus {
     border-radius: 20px;
     padding: 10px;
 }
+
+.averageTime{
+    color: white;
+}
 @keyframes rotateWatch{
     0%{
         transform: rotateY(0);

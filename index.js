@@ -144,13 +144,20 @@ function handleOk(){
     if(JSON.parse(localStorage.getItem("recordDays")) !==null){
         checkNull = JSON.parse(localStorage.getItem("recordDays")).map(day => `${day}\n<br>`).join('');
     }
+    let daysLeng = JSON.parse(localStorage.getItem("recordDays")).length+1;
+    let averageTime = 0;
 
-    //JSON.parse(localStorage.getItem("recordDays"));
+    JSON.parse(localStorage.getItem("recordDays")).map(
+     day => averageTime+= parseInt(day.split("시간")[0])*60 + parseInt(day.split(" ")[1])
+    );
+
+    
+    let average = `평균 ${(Math.floor(averageTime/60) / (daysLeng)).toFixed(1)}시간 학습`;
     
     printed.innerHTML = `
     <h2 class="recordTitle" id="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
     <ul class="recordList id="recordList">
-    <li class="record">${checkNull}${todayTotal}</li></ul>
+    <li class="record">${checkNull}${todayTotal}<div class="border">------------------</div><div class="averageTime">${daysLeng}일간 / ${average}</div></li></ul>
    `
    const span = document.createElement("span");
    span.innerHTML = "X";
@@ -164,7 +171,7 @@ function handleOk(){
    downloadBtn.id = "downloadBtn";
    downloadBtn.innerHTML="기록 저장";
    downloadBtn.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(
-       `총 공부시간: ${(totalTime/3600).toFixed(1)}시간\n\n공부기록\n\n${checkNull.length >0 ? checkNull.split("<br>").join('') : ""}${todayTotal}`));
+       `총 공부시간: ${(totalTime/3600).toFixed(1)}시간\n\n공부기록\n\n${checkNull.length >0 ? checkNull.split("<br>").join('') : ""}${todayTotal}\n\n${daysLeng}일간 / ${average}`));
    downloadBtn.setAttribute('download', "공부 기록");
    printed.appendChild(downloadBtn)
     handleInit()
