@@ -154,8 +154,9 @@ function handleOk(){
      day => averageTime+= parseInt(day.split("시간")[0])*60 + parseInt(day.split(" ")[1])
     );
 
+    console.log(averageTime)
     
-    let average = `평균 ${(Math.floor(averageTime/60) / (daysLeng)).toFixed(1)}시간 학습`;
+    let average = `평균 ${((averageTime/60).toFixed(1) / (daysLeng)).toFixed(1)}시간 학습`;
     
     printed.innerHTML = `
     <h2 class="recordTitle" id="recordTitle">총 공부시간 ${(totalTime/3600).toFixed(1)}시간 달성!</h2>
