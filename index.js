@@ -130,8 +130,8 @@ function handleOk(){
         for(let i=0 ; i<record1.length-2 ; i++){
             sumDay += parseInt(record1[i].split("시간")[0])*60 + parseInt(record1[i].split(" ")[1]);
         }
-        recordToString = `${Math.floor(sumDay/60)}시간 ${Math.floor(sumDay%60)}분`;
-        recordDays.push(recordToString + record1[record1.length-2].split("분 ")[1]);
+        recordToString = `${Math.floor(sumDay/60)}시간 ${Math.floor(sumDay%60)}분 / ${record1[record1.length-2].split("분 ")[1]}`;
+        recordDays.push(recordToString);
         console.log(recordDays)
         localStorage.setItem("recordDays", JSON.stringify(recordDays));
     }
