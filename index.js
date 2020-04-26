@@ -99,6 +99,9 @@ function handleOk(){
     if(window.matchMedia("(max-width: 560px)").matches){
         printed.style.animation = "printResult_560 0.7s ease-in-out forwards";
     }
+    if(window.matchMedia("(max-width: 420px)").matches){
+        printed.style.animation = "printResult_420 0.7s ease-in-out forwards";
+    }
     textBackground.style.display = "none";
     author.style.display = "none";
     const ofToday = JSON.parse(localStorage.getItem("records")).filter(record => record.split("분 ")[1] === newRecord.split("분 ")[1]);

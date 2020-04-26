@@ -438,7 +438,7 @@ select:-webkit-autofill:focus {
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 420px) {
     .background{
         line-height: 2;
         
@@ -446,6 +446,47 @@ select:-webkit-autofill:focus {
     .background-effect{
         line-height: 2;
     }
+    .watch_front{
+        margin-left: -20px;
+        margin-top: 10vh;
+        
+    }
+    
+    .watch_back{
+        margin-left: -20px;
+        margin-top: 10vh;
+        
+    }
+    
+    .printed{
+        margin-left: -20px;
+        margin-top: 10vh;
+        width:80vw;
+        height:10vh;
+    }
+    
+    .watch_left{
+        margin-left: -20px;
+        margin-top: 10vh;
+        
+    }
+    
+    .watch_right{
+        margin-left: -20px;
+        margin-top: 10vh;
+    }
+    
+    .watch_top{
+        margin-left: -20px;
+        margin-top: 10vh;
+    }
+
+    .exitPrint{
+        margin-top: -18vh;
+        margin-left: 20vh;
+        font-size: 30px;
+    }
+    
 }
 
 @keyframes showAuthor{
@@ -528,6 +569,17 @@ select:-webkit-autofill:focus {
     }
 }
 
+@keyframes printResult_420{
+    0%{
+    }
+    100%{
+        z-index: 100;
+        transform: translateY(-53vh) translateX(0) translateZ(500px);
+        height:45vh;
+        width: 80vw;
+    }
+}
+
 @keyframes printBack{
     
         0%{
@@ -559,6 +611,8 @@ select:-webkit-autofill:focus {
         background: none;
 }
 }
+
+
 
 @keyframes flick{
     0%{
